@@ -1,5 +1,6 @@
 "use strict";
 import { fetchProducts } from './functions.js';
+import { saveVote, getVotes } from './firebase.js';
 
 // Definir la función flecha renderProducts
 const renderProducts = () => {
@@ -99,6 +100,108 @@ const showVideo = () => {
         });
     }
 };
+
+const enableForm = () => {
+  // Obtener referencia al formulario
+  const form = document.getElementById('form_voting');
+
+  // Asegurarse de que el formulario exista en el DOM
+  if (!form) {
+    console.error('No se encontró el formulario con id "form_voting".');
+    return;
+  }
+
+  // Agregar listener al evento 'submit'
+  form.addEventListener('submit', async (event) => {
+    // Evitar comportamiento por defecto del formulario
+    event.preventDefault();
+
+    // Obtener valor del elemento select_product
+    const selectProduct = document.getElementById('select_product');
+    const value = selectProduct?.value;
+
+    if (!value) {
+      alert('Por favor seleccione un producto antes de enviar el voto.');
+      return;
+    }
+
+    try {
+    const result = await saveVote(value);
+
+    if (result.status === "success") {
+      alert(result.message); // muestra el mensaje correcto
+      await displayVotes();  // actualizar la tabla automáticamente
+    } else {
+      alert(`Error: ${result.message}`);
+    }
+  } catch (error) {
+    alert(`Error al guardar el voto: ${error.message}`);
+  }
+  });
+};
+
+// Función para mostrar los votos en una tabla
+const displayVotes = async () => {
+  const resultsContainer = document.getElementById('results');
+  if (!resultsContainer) return;
+
+  try {
+    const result = await getVotes();
+
+    if (!result.success) {
+      resultsContainer.innerHTML = `<p>${result.message}</p>`;
+      return;
+    }
+
+    const votesData = result.data;
+
+    // Contar votos por producto
+    const votesCount = {};
+    for (const key in votesData) {
+      const vote = votesData[key];
+      if (votesCount[vote.productID]) {
+        votesCount[vote.productID]++;
+      } else {
+        votesCount[vote.productID] = 1;
+      }
+    }
+
+    // Crear tabla HTML
+    let tableHTML = `
+      <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Total de votos</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    for (const productID in votesCount) {
+      tableHTML += `
+        <tr>
+          <td>${productID}</td>
+          <td>${votesCount[productID]}</td>
+        </tr>
+      `;
+    }
+
+    tableHTML += `</tbody></table>`;
+
+    resultsContainer.innerHTML = tableHTML;
+
+  } catch (error) {
+    resultsContainer.innerHTML = `<p>Error al obtener los votos: ${error.message}</p>`;
+  }
+};
+
+
+(async () => {
+  enableForm();
+  await displayVotes();
+})();
+
 
 (() => {
     showToast();
