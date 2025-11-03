@@ -1,219 +1,702 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <title>landingpage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dulce Tentación | Repostería Artesanal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // Paleta rosa principal con colores de apoyo
+            'brand-pink': {
+              50: '#fdf2f8',
+              100: '#fce7f3',
+              200: '#fbcfe8',
+              300: '#f9a8d4',
+              400: '#f472b6',
+              500: '#ec4899',  // Rosa principal de marca
+              600: '#db2777',
+              700: '#be185d',
+              800: '#9d174d',
+              900: '#831843',
+            },
+            // Colores neutrales para equilibrio
+            'neutral': {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              700: '#404040',
+              800: '#262626',
+              900: '#171717',
+            },
+            // Acentos complementarios
+            'accent': {
+              50: '#fefce8',
+              100: '#fef9c3',
+              500: '#eab308',  // Amarillo suave
+              600: '#ca8a04',
+            }
+          },
+          fontFamily: {
+            custom: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .product-card:hover {
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+    }
+
+    .floating-button {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    /* Mejoras de legibilidad */
+    .text-brand-contrast {
+      color: #831843;
+      /* Rosa oscuro para buen contraste */
+    }
+
+    .dark .text-brand-contrast {
+      color: #fbcfe8;
+      /* Rosa claro en modo oscuro */
+    }
+
+    /* Gradientes sutiles */
+    .hero-gradient {
+      background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
+    }
+
+    .section-gradient {
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fafafa 100%);
+    }
+
+    .dark .section-gradient {
+      background: linear-gradient(135deg, #1a1a1a 0%, #262626 50%, #404040 100%);
+    }
+
+    /* Transiciones suaves para modo oscuro */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
 </head>
 
-<body>
-  <nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-      </a>
-      <button data-collapse-toggle="navbar-default" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
-        </svg>
-      </button>
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul
-          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-              aria-current="page">Home</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-          </li>
-        </ul>
+<body class="bg-white dark:bg-neutral-900 font-custom text-neutral-800 dark:text-neutral-200">
+  <!-- Botón modo oscuro/claro -->
+  <button id="theme-toggle" class="fixed top-4 right-4 z-50 bg-white dark:bg-neutral-800 p-2 rounded-full shadow-lg">
+    <i class="fas fa-moon text-neutral-700 dark:text-yellow-400" id="theme-icon"></i>
+  </button>
+
+  <!-- Header -->
+  <header
+    class="bg-white dark:bg-neutral-800 shadow-sm sticky top-0 z-40 border-b border-neutral-200 dark:border-neutral-700">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div
+          class="w-10 h-10 rounded-full bg-gradient-to-r from-brand-pink-500 to-brand-pink-600 flex items-center justify-center shadow-md">
+          <i class="fas fa-cupcake text-white text-lg"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-neutral-800 dark:text-white">Dulce<span
+              class="text-brand-pink-500">Tentación</span></h1>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">Repostería Artesanal</p>
+        </div>
       </div>
-    </div>
-  </nav>
-  <main class="bg-slate-50 dark:bg-gray-900">
-    <div id="container-01" class="mx-auto px-4 py-20 text-center">
-      <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-        Tu presencia digital comienza aquí
-      </h1>
-      <p class="mt-6 text-lg leading-relaxed text-gray-600 max-w-2xl mx-auto dark:text-gray-300">
-        Creamos experiencias web atractivas y rápidas con Tailwind CSS 4.1.
-        Dale vida a tus ideas con un diseño moderno y responsivo.
-      </p>
-      <div id="container-02" class="mt-8 flex justify-center gap-4">
-        <button id="start" class="inline-block px-6 py-3 text-white bg-blue-600 rounded-lg">
-          Comenzar
+
+      <nav class="hidden md:flex space-x-8">
+        <a href="#products"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium">Productos</a>
+        <a href="#about"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium">Nosotros</a>
+        <a href="#testimonials"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium">Testimonios</a>
+        <a href="#contact"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium">Contacto</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <button
+          class="px-4 py-2 bg-gradient-to-r from-brand-pink-500 to-brand-pink-600 text-white rounded-full text-sm hover:shadow-lg transition-all font-medium">
+          <i class="fas fa-shopping-cart mr-2"></i>Hacer Pedido
         </button>
-        <button id="demo"
-          class="inline-block px-6 py-3 border border-gray-300 text-gray-700 rounded-lg dark:border-gray-600 dark:text-white">
-          Ver demo
-        </button>
-      </div>
-    </div>
-  </main>
-  <section class="bg-white dark:bg-gray-900">
-    <div id="container-03" class="px-4 py-8 mx-auto max-w-md md:max-w-xl">
-      <div id="container-04" class="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <img src="https://placehold.co/50" alt="Imagen 1" class="w-full h-auto rounded">
-        <img src="https://placehold.co/50" alt="Imagen 2" class="w-full h-auto rounded">
-        <img src="https://placehold.co/50" alt="Imagen 3" class="w-full h-auto rounded">
-        <img src="https://placehold.co/50" alt="Imagen 4" class="w-full h-auto rounded">
-      </div>
-    </div>
-  </section>
-  <section class="bg-slate-50 dark:bg-gray-900">
-
-    <div id="container-05" class="px-4 pt-8 mx-auto max-w-md md:max-w-xl">
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
-        <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Productos más
-          vendidos</h2>
-      </div>
-    </div>
-
-    <div id="container-06" class="max-w-4xl pt-8 mx-auto">
-      <form class="max-w-sm mx-auto">
-        <select id="categories"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option selected>Seleccione una categoría</option>
-          <option value="1">Category01</option>
-          <option value="2">Category02</option>
-          <option value="3">Category03</option>
-        </select>
-      </form>
-    </div>
-
-    <div id="container-07" class="max-w-4xl pt-5 pb-5 mx-auto">
-      <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 gap-3 p-6">
-
-        <!-- Products Card -->
-        <div class="animate-pulse space-y-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
-          <div class="w-full h-40 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
-          <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-          <div class="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
-          <div class="space-y-2">
-            <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
-          </div>
-        </div>
-
-        <!-- Products Card -->
-        <div class="animate-pulse space-y-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
-          <div class="w-full h-40 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
-          <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-          <div class="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
-          <div class="space-y-2">
-            <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
-          </div>
-        </div>
-
-        <!-- Products Card -->
-        <div class="animate-pulse space-y-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
-          <div class="w-full h-40 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
-          <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-          <div class="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
-          <div class="space-y-2">
-            <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="flex flex-col items-center justify-center bg-white py-8">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Vota por tu producto preferido</h2>
-
-      <div class="mb-6">
-        <!-- FORMULARIO CORREGIDO - este es el único que debe existir -->
-        <form id="form_voting" class="relative flex items-center">
-          <select id="select_product"
-            class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            <option value="" disabled selected>Seleccione un producto</option>
-            <option value="product1">Producto 1</option>
-            <option value="product2">Producto 2</option>
-            <option value="product3">Producto 3</option>
-          </select>
-          <button type="submit"
-            class="ml-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-            VOTAR
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-neutral-700 dark:text-neutral-300">
+            <i class="fas fa-bars text-xl"></i>
           </button>
-        </form>
+        </div>
       </div>
+    </div>
 
-      <div id="results" class="border border-gray-300 rounded-lg h-52 w-full p-2 bg-gray-50">
-        <p class="text-gray-500 text-center mt-16">Resultado de la votación</p>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-white dark:bg-neutral-800 py-4 px-4 shadow-lg border-t border-neutral-200 dark:border-neutral-700">
+      <div class="flex flex-col space-y-4">
+        <a href="#products"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium py-2">Productos</a>
+        <a href="#about"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium py-2">Nosotros</a>
+        <a href="#testimonials"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium py-2">Testimonios</a>
+        <a href="#contact"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-brand-pink-500 dark:hover:text-brand-pink-300 transition-colors font-medium py-2">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Dulces Momentos Hechos con Amor</h1>
+        <p class="text-xl mb-8 opacity-95">
+          Descubre nuestra repostería artesanal, donde cada postre es una obra de arte creada con ingredientes premium y
+          mucha pasión.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="#products"
+            class="bg-white text-brand-pink-600 font-bold py-3 px-8 rounded-full hover:bg-neutral-100 transition shadow-lg">
+            <i class="fas fa-eye mr-2"></i>Ver Productos
+          </a>
+          <a href="#contact"
+            class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white/10 transition">
+            <i class="fas fa-calendar-check mr-2"></i>Hacer Pedido
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <div id="toast-interactive"
-    class="hidden right-5 bottom-5 flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800"
-    role="alert">
-    <div class="flex">
+  <!-- Features Section -->
+  <section class="py-16 bg-white dark:bg-neutral-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-neutral-800 dark:text-white">¿Por Qué Elegirnos?</h2>
 
-      <!-- Content -->
-      <div class="ms-3 text-sm font-normal">
-        <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Suscríbete ahora</span>
-        <div class="mb-2">Suscríbete ahora para obtener beneficios de cliente premium y pro.</div>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <a href="#"
-              class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">Sí,
-              quiero</a>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-neutral-50 dark:bg-neutral-700 rounded-xl p-6 hover:shadow-lg transition text-center border border-neutral-200 dark:border-neutral-600">
+          <div
+            class="w-16 h-16 rounded-full bg-brand-pink-100 dark:bg-brand-pink-900 text-brand-pink-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+            <i class="fas fa-heart text-2xl"></i>
           </div>
-          <div>
-            <a href="#"
-              class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">No
-              ahora</a>
+          <h3 class="text-xl font-bold mb-2 text-neutral-800 dark:text-white">Hecho con Amor</h3>
+          <p class="text-neutral-600 dark:text-neutral-300">
+            Cada producto es elaborado artesanalmente con ingredientes frescos y de la más alta calidad.
+          </p>
+        </div>
+
+        <div
+          class="bg-neutral-50 dark:bg-neutral-700 rounded-xl p-6 hover:shadow-lg transition text-center border border-neutral-200 dark:border-neutral-600">
+          <div
+            class="w-16 h-16 rounded-full bg-brand-pink-100 dark:bg-brand-pink-900 text-brand-pink-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+            <i class="fas fa-bolt text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-neutral-800 dark:text-white">Entrega Rápida</h3>
+          <p class="text-neutral-600 dark:text-neutral-300">
+            Preparamos y entregamos tus pedidos en el menor tiempo posible, manteniendo siempre la frescura.
+          </p>
+        </div>
+
+        <div
+          class="bg-neutral-50 dark:bg-neutral-700 rounded-xl p-6 hover:shadow-lg transition text-center border border-neutral-200 dark:border-neutral-600">
+          <div
+            class="w-16 h-16 rounded-full bg-brand-pink-100 dark:bg-brand-pink-900 text-brand-pink-500 flex items-center justify-center mx-auto mb-4 shadow-md">
+            <i class="fas fa-palette text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-neutral-800 dark:text-white">Personalizable</h3>
+          <p class="text-neutral-600 dark:text-neutral-300">
+            Adaptamos nuestros productos a tus necesidades y preferencias para ocasiones especiales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-16 section-gradient">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-brand-contrast mb-4">Nuestros Productos</h2>
+        <p class="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">Descubre nuestra variedad de postres y
+          tortas artesanales</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product Card 1 -->
+        <div
+          class="product-card bg-white dark:bg-neutral-800 rounded-xl shadow-md overflow-hidden transition duration-300 border border-neutral-200 dark:border-neutral-700">
+          <div class="relative">
+            <div
+              class="w-full h-48 bg-gradient-to-br from-brand-pink-100 to-brand-pink-200 dark:from-brand-pink-900 dark:to-brand-pink-800 flex items-center justify-center">
+              <i class="fas fa-birthday-cake text-6xl text-brand-pink-500"></i>
+            </div>
+            <div
+              class="absolute top-4 right-4 bg-brand-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow">
+              $25.000
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-lg mb-2 text-neutral-800 dark:text-white">Torta de Chocolate Artesanal</h3>
+            <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+              Deliciosa torta de chocolate con relleno cremoso y decoración personalizada.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <i class="fas fa-star text-accent-500 mr-1"></i>
+                <span class="text-sm text-neutral-600 dark:text-neutral-400">4.9 (128)</span>
+              </div>
+              <button
+                class="text-sm bg-gradient-to-r from-brand-pink-500 to-brand-pink-600 text-white px-4 py-2 rounded-full font-semibold hover:shadow transition">
+                Pedir Ahora
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div
+          class="product-card bg-white dark:bg-neutral-800 rounded-xl shadow-md overflow-hidden transition duration-300 border border-neutral-200 dark:border-neutral-700">
+          <div class="relative">
+            <div
+              class="w-full h-48 bg-gradient-to-br from-brand-pink-100 to-brand-pink-200 dark:from-brand-pink-900 dark:to-brand-pink-800 flex items-center justify-center">
+              <i class="fas fa-cupcake text-6xl text-brand-pink-500"></i>
+            </div>
+            <div
+              class="absolute top-4 right-4 bg-brand-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow">
+              $3.500 c/u
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-lg mb-2 text-neutral-800 dark:text-white">Cupcakes Decorados</h3>
+            <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+              Esponjosos cupcakes con diferentes sabores y decoraciones creativas.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <i class="fas fa-star text-accent-500 mr-1"></i>
+                <span class="text-sm text-neutral-600 dark:text-neutral-400">4.8 (95)</span>
+              </div>
+              <button
+                class="text-sm bg-gradient-to-r from-brand-pink-500 to-brand-pink-600 text-white px-4 py-2 rounded-full font-semibold hover:shadow transition">
+                Pedir Ahora
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div
+          class="product-card bg-white dark:bg-neutral-800 rounded-xl shadow-md overflow-hidden transition duration-300 border border-neutral-200 dark:border-neutral-700">
+          <div class="relative">
+            <div
+              class="w-full h-48 bg-gradient-to-br from-brand-pink-100 to-brand-pink-200 dark:from-brand-pink-900 dark:to-brand-pink-800 flex items-center justify-center">
+              <i class="fas fa-cookie text-6xl text-brand-pink-500"></i>
+            </div>
+            <div
+              class="absolute top-4 right-4 bg-brand-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow">
+              $2.000 c/u
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-lg mb-2 text-neutral-800 dark:text-white">Galletas Personalizadas</h3>
+            <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+              Galletas decoradas a mano con diseños únicos para tus eventos especiales.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <i class="fas fa-star text-accent-500 mr-1"></i>
+                <span class="text-sm text-neutral-600 dark:text-neutral-400">4.9 (142)</span>
+              </div>
+              <button
+                class="text-sm bg-gradient-to-r from-brand-pink-500 to-brand-pink-600 text-white px-4 py-2 rounded-full font-semibold hover:shadow transition">
+                Pedir Ahora
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Close button -->
-      <button type="button"
-        class="ms-auto -mx-1.5 -my-1.5 p-1.5 inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-white rounded-lg hover:text-gray-900 hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-        data-dismiss-target="#toast-interactive" aria-label="Close">
-        <span class="sr-only">Close</span>
-        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" aria-hidden="true">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-        </svg>
-      </button>
+      <div class="text-center mt-12">
+        <a href="#contact"
+          class="bg-gradient-to-r from-brand-pink-500 to-brand-pink-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transition inline-flex items-center">
+          <i class="fas fa-list mr-2"></i>Ver Todos los Productos
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Importar el módulo CORREGIDO -->
-  <script type="module" src="src/js/file01.js"></script>
 
-  <!-- Script de diagnóstico -->
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h2 class="text-3xl font-bold text-brand-pink-500 dark:text-brand-pink-300">Nuestra Historia</h2>
+          <p class="text-gray-600 mb-4">
+            Dulce Tentación nació de la pasión por crear postres que no solo sean deliciosos, sino que también lleven
+            consigo un toque especial de amor y dedicación.
+          </p>
+          <p class="text-gray-600 mb-4">
+            Comenzamos como un pequeño emprendimiento familiar y hoy nos enorgullece servir a nuestra comunidad con
+            productos de la más alta calidad, elaborados con ingredientes frescos y naturales.
+          </p>
+          <p class="text-gray-600">
+            Cada pedido es tratado con especial cuidado, asegurando que recibas no solo un producto excepcional, sino
+            una experiencia memorable.
+          </p>
+        </div>
+        <div class="md:w-1/2 md:pl-12">
+          <div class="bg-brand-pink-50 dark:bg-neutral-700 rounded-xl p-6>
+            <h3 class=" text-3xl font-bold mb-4 text-brand-pink-500 dark:text-white">Nuestros Valores</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mt-1 mr-3 text-brand-pink-500 dark:text-brand-pink-300"></i>
+                <span class="text-gray-800 dark:text-gray-200">Calidad premium en cada producto</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mt-1 mr-3 text-brand-pink-500 dark:text-brand-pink-300"></i>
+                <span class="text-gray-800 dark:text-gray-200">Ingredientes frescos y naturales</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mt-1 mr-3 text-brand-pink-500 dark:text-brand-pink-300"></i>
+                <span class="text-gray-800 dark:text-gray-200">Personalización para cada ocasión</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle mt-1 mr-3 text-brand-pink-500 dark:text-brand-pink-300"></i>
+                <span class="text-gray-800 dark:text-gray-200">Compromiso con la satisfacción del cliente</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-16 bg-light-pink">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-dark-pink mb-4">Lo Que Dicen Nuestros Clientes</h2>
+        <p class="max-w-2xl mx-auto text-dark-pink/80">Experiencias reales de quienes han disfrutado de nuestros
+          productos</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="testimonial-card p-6 rounded-xl shadow-md">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gradient-to-r from-secondary to-accent flex items-center justify-center text-white font-bold mr-4">
+              M
+            </div>
+            <div>
+              <h4 class="font-bold text-dark-pink">María González</h4>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-dark-pink">
+            "La torta para el cumpleaños de mi hija fue increíble. No solo era hermosa, sino que sabía deliciosa. Todos
+            mis invitados preguntaron por el contacto."
+          </p>
+        </div>
+
+        <div class="testimonial-card p-6 rounded-xl shadow-md">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gradient-to-r from-secondary to-accent flex items-center justify-center text-white font-bold mr-4">
+              C
+            </div>
+            <div>
+              <h4 class="font-bold text-dark-pink">Carlos Rodríguez</h4>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-dark-pink">
+            "Pedí cupcakes para mi oficina y fueron un éxito total. La presentación era impecable y el sabor
+            espectacular. Definitivamente repetiré."
+          </p>
+        </div>
+
+        <div class="testimonial-card p-6 rounded-xl shadow-md">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gradient-to-r from-secondary to-accent flex items-center justify-center text-white font-bold mr-4">
+              A
+            </div>
+            <div>
+              <h4 class="font-bold text-dark-pink">Ana Martínez</h4>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-dark-pink">
+            "Las galletas personalizadas para el baby shower fueron adorables. El diseño era exactamente lo que quería y
+            el sabor era delicioso. Muy recomendable."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section - Opción 3: Minimalista -->
+  <section id="contact" class="py-16 bg-white dark:bg-neutral-800">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-brand-pink-500 dark:text-brand-pink-300"> Haz Tu Pedido</h2>
+
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400">Contáctanos para consultas, cotizaciones y pedidos
+          personalizados</p>
+      </div>
+
+      <div
+        class="max-w-4xl mx-auto bg-gradient-to-br from-brand-pink-100 to-white dark:from-neutral-700 dark:to-neutral-800 rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-neutral-600">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="p-8">
+            <h3 class="text-xl font-bold mb-6 text-gray-800 dark:text-white">Información de Contacto</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <i class="fas fa-phone mt-1 mr-4 text-brand-pink-500"></i>
+                <div>
+                  <h4 class="font-bold text-gray-800 dark:text-white">Teléfono</h4>
+                  <p class="text-gray-600 dark:text-gray-400">+57 300 123 4567</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-envelope mt-1 mr-4 text-brand-pink-500"></i>
+                <div>
+                  <h4 class="font-bold text-gray-800 dark:text-white">Email</h4>
+                  <p class="text-gray-600 dark:text-gray-400">pedidos@dulcetentacion.com</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-4 text-brand-pink-500"></i>
+                <div>
+                  <h4 class="font-bold text-gray-800 dark:text-white">Dirección</h4>
+                  <p class="text-gray-600 dark:text-gray-400">Calle 123 #45-67, Bogotá, Colombia</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-clock mt-1 mr-4 text-brand-pink-500"></i>
+                <div>
+                  <h4 class="font-bold text-gray-800 dark:text-white">Horario de Atención</h4>
+                  <p class="text-gray-600 dark:text-gray-400">Lunes a Sábado: 8:00 AM - 6:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-bold mb-4 text-gray-800 dark:text-white">Síguenos en Redes Sociales</h4>
+              <div class="flex space-x-4">
+                <a href="#"
+                  class="w-10 h-10 rounded-full bg-brand-pink-500 text-white flex items-center justify-center hover:bg-brand-pink-600 transition hover:scale-110 shadow">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#"
+                  class="w-10 h-10 rounded-full bg-brand-pink-500 text-white flex items-center justify-center hover:bg-brand-pink-600 transition hover:scale-110 shadow">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#"
+                  class="w-10 h-10 rounded-full bg-brand-pink-500 text-white flex items-center justify-center hover:bg-brand-pink-600 transition hover:scale-110 shadow">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="p-8 bg-white dark:bg-neutral-700 border-t md:border-t-0 md:border-l border-gray-200 dark:border-neutral-600">
+            <h3 class="text-xl font-bold mb-6 text-gray-800 dark:text-white">Formulario de Contacto</h3>
+            <form class="space-y-4">
+              <div>
+                <label class="block mb-2 font-medium text-gray-700 dark:text-gray-300">Nombre Completo</label>
+                <input type="text"
+                  class="w-full bg-gray-50 dark:bg-neutral-600 border border-gray-300 dark:border-neutral-500 rounded-lg px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-pink-500 focus:border-transparent transition">
+              </div>
+              <div>
+                <label class="block mb-2 font-medium text-gray-700 dark:text-gray-300">Correo Electrónico</label>
+                <input type="email"
+                  class="w-full bg-gray-50 dark:bg-neutral-600 border border-gray-300 dark:border-neutral-500 rounded-lg px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-pink-500 focus:border-transparent transition">
+              </div>
+              <div>
+                <label class="block mb-2 font-medium text-gray-700 dark:text-gray-300">Teléfono</label>
+                <input type="tel"
+                  class="w-full bg-gray-50 dark:bg-neutral-600 border border-gray-300 dark:border-neutral-500 rounded-lg px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-pink-500 focus:border-transparent transition">
+              </div>
+              <div>
+                <label class="block mb-2 font-medium text-gray-700 dark:text-gray-300">Mensaje</label>
+                <textarea rows="4"
+                  class="w-full bg-gray-50 dark:bg-neutral-600 border border-gray-300 dark:border-neutral-500 rounded-lg px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-pink-500 focus:border-transparent transition"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full bg-brand-pink-500 text-white font-bold py-3 rounded-lg hover:bg-brand-pink-600 transition hover:shadow-lg">
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/593986656631" target="_blank"
+    class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg floating-button z-40 hover:shadow-xl transition">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer class="bg-dark-pink text-white pt-12 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Dulce<span class="text-accent">Tentación</span></h3>
+          <p class="text-pink-200 mb-4">
+            Repostería artesanal con ingredientes de calidad y mucho amor. Creando momentos dulces para ocasiones
+            especiales.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/horneando_con_amor24/" class="text-pink-200 hover:text-white"><i
+                class="fab fa-instagram"></i></a>
+            <a href="#" class="text-pink-200 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-pink-200 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-lg mb-4">Productos</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-pink-200 hover:text-white">Tortas Personalizadas</a></li>
+            <li><a href="#" class="text-pink-200 hover:text-white">Cupcakes Decorados</a></li>
+            <li><a href="#" class="text-pink-200 hover:text-white">Galletas Artesanales</a></li>
+            <li><a href="#" class="text-pink-200 hover:text-white">Postres Individuales</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+          <ul class="space-y-2">
+            <li><a href="#products" class="text-pink-200 hover:text-white">Nuestros Productos</a></li>
+            <li><a href="#about" class="text-pink-200 hover:text-white">Sobre Nosotros</a></li>
+            <li><a href="#testimonials" class="text-pink-200 hover:text-white">Testimonios</a></li>
+            <li><a href="#contact" class="text-pink-200 hover:text-white">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-lg mb-4">Contacto</h4>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 mr-2 text-accent"></i>
+              <span class="text-pink-200">+593 986656631</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-2 text-accent"></i>
+              <span class="text-pink-200">pedidos@dulcetentacion.com</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-2 text-accent"></i>
+              <span class="text-pink-200">Calle 123 #45-67, Bogotá</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-pink-700 pt-8 text-center text-pink-300">
+        <p>© 2023 Dulce Tentación. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    console.log("🔍 Diagnóstico HTML:");
-    console.log("Formulario encontrado:", !!document.getElementById('form_voting'));
-    console.log("Select encontrado:", !!document.getElementById('select_product'));
-    console.log("Results encontrado:", !!document.getElementById('results'));
-    console.log("Products container encontrado:", !!document.getElementById('products-container'));
+    // Toggle tema oscuro/claro
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      if (document.documentElement.classList.contains('dark')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        themeIcon.classList.remove('text-neutral-700');
+        themeIcon.classList.add('text-accent-500');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        themeIcon.classList.remove('text-accent-500');
+        themeIcon.classList.add('text-neutral-700');
+      }
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
   </script>
 </body>
 
