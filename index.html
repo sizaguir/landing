@@ -146,6 +146,7 @@
       <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Vota por tu producto preferido</h2>
 
       <div class="mb-6">
+        <!-- FORMULARIO CORREGIDO - este es el único que debe existir -->
         <form id="form_voting" class="relative flex items-center">
           <select id="select_product"
             class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -154,12 +155,10 @@
             <option value="product2">Producto 2</option>
             <option value="product3">Producto 3</option>
           </select>
-          <button
+          <button type="submit"
             class="ml-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             VOTAR
           </button>
-
-          
         </form>
       </div>
 
@@ -168,7 +167,6 @@
       </div>
     </div>
   </section>
-
 
   <div id="toast-interactive"
     class="hidden right-5 bottom-5 flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800"
@@ -206,18 +204,17 @@
     </div>
   </div>
 
-  <form id="form_voting">
-    <select id="select_product" required>
-      <option value="" selected disabled>Seleccione un producto</option>
-      <option value="p1">Producto 1</option>
-      <option value="p2">Producto 2</option>
-    </select>
-    <button type="submit">Votar</button>
-  </form>
-
-  <!-- Importar el módulo -->
-
+  <!-- Importar el módulo CORREGIDO -->
   <script type="module" src="src/js/file01.js"></script>
+
+  <!-- Script de diagnóstico -->
+  <script>
+    console.log("🔍 Diagnóstico HTML:");
+    console.log("Formulario encontrado:", !!document.getElementById('form_voting'));
+    console.log("Select encontrado:", !!document.getElementById('select_product'));
+    console.log("Results encontrado:", !!document.getElementById('results'));
+    console.log("Products container encontrado:", !!document.getElementById('products-container'));
+  </script>
 </body>
 
 </html>
