@@ -98,6 +98,10 @@
       background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fafafa 100%);
     }
 
+    .section-testimonios {
+      background: linear-gradient(135deg, #fdf2f8 0%, #f5e5ed 50%, #fafafa 100%);
+    }
+
     .dark .section-gradient {
       background: linear-gradient(135deg, #1a1a1a 0%, #262626 50%, #404040 100%);
     }
@@ -472,7 +476,7 @@
 
   <!-- About Section -->
 
-  <section id="about" class="py-16 bg-white dark:bg-neutral-800">
+  <section id="about" class="py-16 bg-white dark:bg-neutral-900">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-10 md:mb-0">
@@ -516,12 +520,12 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section id="testimonials" class="py-16 bg-light-pink">
+  <section id="testimonials" class="py-16 bg-pink-50 dark:bg-neutral-800 transition-colors duration-300">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-brand-pink-500 dark:text-brand-pink-300 mb-4">Lo Que Dicen Nuestros Clientes
+        <h2 class="text-3xl font-bold text-brand-contrast mb-4">Lo Que Dicen Nuestros Clientes
         </h2>
-        <p class="max-w-2xl mx-auto text-dark-pink/80">Experiencias reales de quienes han disfrutado de nuestros
+        <p class="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">Experiencias reales de quienes han disfrutado de nuestros
           productos</p>
       </div>
 
@@ -533,7 +537,7 @@
               M
             </div>
             <div>
-              <h4 class="font-bold text-brand-pink-500">María González</h4>
+              <h4 class="font-bold text-brand-pink-500 dark:text-brand-pink-100">María González</h4>
               <div class="flex text-yellow-400">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -556,7 +560,7 @@
               C
             </div>
             <div>
-              <h4 class="font-bold text-brand-pink-500">Carlos Rodríguez</h4>
+              <h4 class="font-bold text-brand-pink-500 dark:text-brand-pink-100">Carlos Rodríguez</h4>
               <div class="flex text-yellow-400">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -579,7 +583,7 @@
               A
             </div>
             <div>
-              <h4 class="font-bold text-brand-pink-500">Ana Martínez</h4>
+              <h4 class="font-bold text-brand-pink-500 dark:text-brand-pink-100">Ana Martínez</h4>
               <div class="flex text-yellow-400">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -735,7 +739,7 @@
   </section>
 
   <div id="toast-interactive"
-    class="hidden fixed right-5 bottom-4 flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800"
+    class="hidden fixed right-5 bottom-4 flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-brand-pink-50 divide-x divide-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800"
     role="alert">
     <div class="flex">
 
@@ -779,8 +783,9 @@
     <i class="fab fa-whatsapp text-2xl"></i>
   </a>
 
-  <!-- Footer -->
-  <footer class="bg-dark-pink text-white pt-12 pb-8">
+  <!--Seccion contactos-->
+
+  <section id="contact" class="py-16 bg-white dark:bg-neutral-700">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div>
@@ -792,9 +797,9 @@
           </p>
           <div class="flex space-x-4">
             <a href="https://www.instagram.com/horneando_con_amor24/"
-              class="text-brand-pink-500 dark:text-neutral-400"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-brand-pink-400 dark:text-neutral-400"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-brand-pink-500 dark:text-neutral-400"><i class="fab fa-whatsapp"></i></a>
+              class="text-brand-pink-500 dark:text-brand-pink-300"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-brand-pink-400 dark:text-brand-pink-300"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-brand-pink-500 dark:text-brand-pink-300"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
 
@@ -836,12 +841,17 @@
           </ul>
         </div>
       </div>
+  </section>
 
-      <div class="border-t border-pink-700 pt-8 text-center text-pink-400">
-        <p>© 2025 HorneandoconAmor. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <footer class="bg-pink-600 dark:bg-neutral-900 text-white pt-2 pb-6 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto text-center border-pink-400 dark:border-neutral-700 pt-6">
+    <p class="text-pink-100 dark:text-neutral-400">
+      © 2025 <span class="font-semibold text-white dark:text-pink-400">Horneando con Amor</span>. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+
 
   <script>
     // Toggle tema oscuro/claro
