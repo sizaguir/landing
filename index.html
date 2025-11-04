@@ -20,13 +20,13 @@
               200: '#fbcfe8',
               300: '#f9a8d4',
               400: '#f472b6',
-              500: '#ec4899',  // Rosa principal de marca
+              500: '#ec4899',  
               600: '#db2777',
               700: '#be185d',
               800: '#9d174d',
               900: '#831843',
             },
-            // Colores neutrales para equilibrio
+            
             'neutral': {
               50: '#fafafa',
               100: '#f5f5f5',
@@ -39,11 +39,11 @@
               800: '#262626',
               900: '#171717',
             },
-            // Acentos complementarios
+            
             'accent': {
               50: '#fefce8',
               100: '#fef9c3',
-              500: '#eab308',  // Amarillo suave
+              500: '#eab308',  
               600: '#ca8a04',
             }
           },
@@ -76,20 +76,15 @@
       100% {
         transform: translateY(0px);
       }
-    }
-
-    /* Mejoras de legibilidad */
+    }    
     .text-brand-contrast {
       color: #831843;
-      /* Rosa oscuro para buen contraste */
     }
 
     .dark .text-brand-contrast {
-      color: #fbcfe8;
-      /* Rosa claro en modo oscuro */
+      color: #fbcfe8;     
     }
-
-    /* Gradientes sutiles */
+   
     .hero-gradient {
       background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
     }
@@ -106,8 +101,7 @@
       background: linear-gradient(135deg, #1a1a1a 0%, #262626 50%, #404040 100%);
     }
 
-    /* Transiciones suaves para modo oscuro */
-    * {
+     {
       transition: background-color 0.3s ease, color 0.3s ease;
     }
   </style>
