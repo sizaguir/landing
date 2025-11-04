@@ -2,10 +2,34 @@
 import { fetchProducts, fetchCategories } from "./functions.js";
 import { saveVote, getVotes } from "./firebase.js";
 
+const setupToastClose = () => {
+  const toast = document.getElementById("toast-interactive");
+  const closeBtn = document.querySelector('[data-dismiss-target="#toast-interactive"]');
+  const noAhoraBtn = document.querySelector('a[href="#"]:nth-child(2)');
+
+  if (!toast) return;
+
+  // Cerrar con la X
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      toast.classList.add("hidden");
+    });
+  }
+
+  // Cerrar con "No ahora"
+  if (noAhoraBtn) {
+    noAhoraBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      toast.classList.add("hidden");
+    });
+  }
+};
+
 const showToast = () => {
   const toast = document.getElementById("toast-interactive");
   if (toast) {
-    toast.classList.add("md:block");
+    toast.classList.remove("hidden");
+    setupToastClose();
   }
 };
 
